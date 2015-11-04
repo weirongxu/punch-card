@@ -6,6 +6,6 @@ Vue.config.debug = true;
 var vm = new Vue({
   el: document.getElementsByTagName('body')[0],
   components: {
-    marker: Marker,
+    app: Marker,
   },
 });

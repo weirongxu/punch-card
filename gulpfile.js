@@ -11,13 +11,13 @@ function webpack_src() {
 
 gulp.task('webpack', function(){
   webpack_src()
-  .pipe(gulp.dest('./dist'));
+  .pipe(gulp.dest('./assets'));
 });
 
 gulp.task('webpack.build', function(){
   webpack_src()
   .pipe(uglify())
-  .pipe(gulp.dest('./dist'));
+  .pipe(gulp.dest('./build'));
 });
 
 gulp.task('browser-sync', function(){

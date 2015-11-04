@@ -61,7 +61,7 @@
 	var vm = new _vue2["default"]({
 	  el: document.getElementsByTagName('body')[0],
 	  components: {
-	    marker: _componentsMarkerVue2["default"]
+	    app: _componentsMarkerVue2["default"]
 	  }
 	});
 
@@ -10467,7 +10467,7 @@
 /* 78 */
 /***/ function(module, exports) {
 
-	module.exports = "<button @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n  <input class=\"clockpicker\" type=\"text\" _v-ffc745d8=\"\">\n  <ul v-for=\"mark in marks\" _v-ffc745d8=\"\">\n    <li _v-ffc745d8=\"\">\n      <input class=\"clockpicker\" type=\"time\" v-model=\"mark.time\" _v-ffc745d8=\"\">\n      <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '工作' : '休息'}}</span>\n      <button @click=\"remove(mark)\" _v-ffc745d8=\"\">删除</button>\n    </li>\n  </ul>\n  历时: {{worktime()}}";
+	module.exports = "<button @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n  <input class=\"clockpicker\" type=\"text\" _v-ffc745d8=\"\">\n  <ul v-for=\"mark in marks\" _v-ffc745d8=\"\">\n    <li _v-ffc745d8=\"\">\n      <input class=\"clockpicker\" type=\"time\" v-model=\"mark.time\" _v-ffc745d8=\"\">\n      <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '工作' : '休息'}}</span>\n      <button @click=\"remove(mark)\" _v-ffc745d8=\"\">删除</button>\n    </li>\n  </ul>\n  历时: {{worktime()}}/8小时";
 
 /***/ }
 /******/ ]);
