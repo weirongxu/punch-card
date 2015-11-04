@@ -9986,7 +9986,7 @@
 
 
 	// module
-	exports.push([module.id, "input[type=range][_v-2260ac6c] {\n    -webkit-appearance: slider-vertical;\n    height: 300px;\n  }", ""]);
+	exports.push([module.id, "input[type=range][_v-ffc745d8] {\n    -webkit-appearance: slider-vertical;\n    height: 300px;\n  }", ""]);
 
 	// exports
 
@@ -10353,7 +10353,7 @@
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "<button @click=\"mark()\" _v-2260ac6c=\"\">打卡</button>\n  <input class=\"clockpicker\" type=\"text\" _v-2260ac6c=\"\">\n  <ul v-for=\"mark in marks\" _v-2260ac6c=\"\">\n    <li _v-2260ac6c=\"\">\n      <input class=\"clockpicker\" type=\"text\" value=\"{{mark.time.getHours()}}:{{mark.time.getMinutes()}}\" @change=\"change(mark)\" _v-2260ac6c=\"\">\n      {{mark.time.getHours()}}:{{mark.time.getMinutes()}}\n      <span _v-2260ac6c=\"\">{{$index % 2 == 0 ? '工作' : '休息'}}</span>\n      <button @click=\"remove(mark)\" _v-2260ac6c=\"\">删除</button>\n    </li>\n  </ul>\n  历时: {{worktime()}}";
+	module.exports = "<button @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n  <input class=\"clockpicker\" type=\"text\" _v-ffc745d8=\"\">\n  <ul v-for=\"mark in marks\" _v-ffc745d8=\"\">\n    <li _v-ffc745d8=\"\">\n      <input class=\"clockpicker\" type=\"text\" value=\"{{mark.time.getHours()}}:{{mark.time.getMinutes()}}\" @change=\"change(mark)\" _v-ffc745d8=\"\">\n      {{mark.time.getHours()}}:{{mark.time.getMinutes()}}\n      <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '工作' : '休息'}}</span>\n      <button @click=\"remove(mark)\" _v-ffc745d8=\"\">删除</button>\n    </li>\n  </ul>\n  历时: {{worktime()}}";
 
 /***/ }
 /******/ ]);
