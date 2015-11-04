@@ -15,7 +15,7 @@
   import Cache from "./cache"
 
   var now = new Date();
-  var today = `${now.getYear()}-${now.getMonth()}-${now.getDay()}`;
+  var today = `${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`;
   var cache = new Cache('marker-' + today);
 
   export default {
@@ -28,25 +28,40 @@
       mark() {
         var now = new Date();
         this.marks.push({
-          time: `${now.getHours()}:${now.getMinutes()}`,
+          time: this.format({hours: now.getHours(), minutes: now.getMinutes()}),
         });
       },
       remove(mark) {
         this.marks.$remove(mark);
       },
       worktime() {
-        // FIXME
         var throughMs = 0;
         for (var i=0; i+1 < this.marks.length; i+=2) {
-          var start = this.marks[i].time;
-          var end = this.marks[i+1].time;
-          var diffMs = end - start;
+          var start = this.marks[i].time.split(':');
+          var end = this.marks[i+1].time.split(':');
+          var start_date = new Date();
+          var end_date = new Date();
+          start_date.setHours(parseInt(start[0]));
+          start_date.setMinutes(parseInt(start[1]));
+          end_date.setHours(parseInt(end[0]));
+          end_date.setMinutes(parseInt(end[1]));
+          var diffMs = end_date - start_date;
           throughMs += diffMs;
         }
-        var through_minute = parseInt(throughMs / 1000 / 60);
-
-        return `${parseInt(through_minute/60)}:${through_minute%60}`
+        var through_minute = throughMs / 1000 / 60;
+        return this.format({minutes: through_minute})
       },
+      format({hours=0, minutes=0}) {
+        var hour = (hours + parseInt(minutes/60)).toString();
+        var minute = parseInt(minutes%60).toString();
+        if (hour.length === 1) {
+          hour = '0' + hour;
+        }
+        if (minute.length === 1) {
+          minute = '0' + minute;
+        }
+        return `${hour}:${minute}`
+      }
     },
     watch: {
       'marks': function(val, old_val){
