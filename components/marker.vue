@@ -43,6 +43,7 @@
   }
 
   export default {
+    replace: false,
     data() {
       return {
         marks: cache.get('marks', []),
