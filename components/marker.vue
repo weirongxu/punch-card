@@ -8,7 +8,7 @@
       <button @click="remove(mark)">删除</button>
     </li>
   </ul>
-  历时: {{worktime()}}
+  历时: {{worktime()}}/8小时
 </template>
 
 <script type="text/javascript">
