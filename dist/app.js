@@ -9935,7 +9935,7 @@
 
 	__webpack_require__(71)
 	module.exports = __webpack_require__(75)
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(76)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(78)
 	if (false) {
 	(function () {
 	var hotAPI = require("vue-hot-reload-api")
@@ -10302,35 +10302,40 @@
 
 /***/ },
 /* 75 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var _interopRequireDefault = __webpack_require__(76)['default'];
+
 	exports.__esModule = true;
-	function render() {
-	  $('.clockpicker').clockpicker({
-	    autoclose: true
-	  });
-	}
+
+	var _cache = __webpack_require__(77);
+
+	var _cache2 = _interopRequireDefault(_cache);
+
+	var now = new Date();
+	var today = now.getYear() + '-' + now.getMonth() + '-' + now.getDay();
+	var cache = new _cache2['default']('marker-' + today);
 
 	exports['default'] = {
 	  data: function data() {
 	    return {
-	      marks: []
+	      marks: cache.get('marks', [])
 	    };
 	  },
 	  methods: {
 	    mark: function mark() {
 	      var now = new Date();
 	      this.marks.push({
-	        time: now
+	        time: now.getHours() + ':' + now.getMinutes()
 	      });
-	      setTimeout(render);
 	    },
 	    remove: function remove(mark) {
 	      this.marks.$remove(mark);
 	    },
 	    worktime: function worktime() {
+	      // FIXME
 	      var throughMs = 0;
 	      for (var i = 0; i + 1 < this.marks.length; i += 2) {
 	        var start = this.marks[i].time;
@@ -10343,8 +10348,10 @@
 	      return parseInt(through_minute / 60) + ':' + through_minute % 60;
 	    }
 	  },
-	  ready: function ready() {
-	    render();
+	  watch: {
+	    'marks': function marks(val, old_val) {
+	      cache.set('marks', val);
+	    }
 	  }
 	};
 	module.exports = exports['default'];
@@ -10353,7 +10360,84 @@
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "<button @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n  <input class=\"clockpicker\" type=\"text\" _v-ffc745d8=\"\">\n  <ul v-for=\"mark in marks\" _v-ffc745d8=\"\">\n    <li _v-ffc745d8=\"\">\n      <input class=\"clockpicker\" type=\"text\" value=\"{{mark.time.getHours()}}:{{mark.time.getMinutes()}}\" @change=\"change(mark)\" _v-ffc745d8=\"\">\n      {{mark.time.getHours()}}:{{mark.time.getMinutes()}}\n      <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '工作' : '休息'}}</span>\n      <button @click=\"remove(mark)\" _v-ffc745d8=\"\">删除</button>\n    </li>\n  </ul>\n  历时: {{worktime()}}";
+	"use strict";
+
+	exports["default"] = function (obj) {
+	  return obj && obj.__esModule ? obj : {
+	    "default": obj
+	  };
+	};
+
+	exports.__esModule = true;
+
+/***/ },
+/* 77 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Cache = (function () {
+	  function Cache(prefix) {
+	    _classCallCheck(this, Cache);
+
+	    this.prefix = prefix;
+	  }
+
+	  _createClass(Cache, [{
+	    key: "read",
+	    value: function read() {
+	      var item = localStorage.getItem(this.prefix);
+	      return item === null ? {} : JSON.parse(item);
+	    }
+	  }, {
+	    key: "write",
+	    value: function write(data) {
+	      localStorage.setItem(this.prefix, JSON.stringify(data));
+	    }
+	  }, {
+	    key: "has",
+	    value: function has(key) {
+	      var data = this.read();
+	      return key in data;
+	    }
+	  }, {
+	    key: "set",
+	    value: function set(key, value) {
+	      var data = this.read();
+	      data[key] = value;
+	      this.write(data);
+	    }
+	  }, {
+	    key: "get",
+	    value: function get(key, _default) {
+	      var data = this.read();
+	      if (key in data) {
+	        return data[key];
+	      } else {
+	        return _default;
+	      }
+	    }
+	  }]);
+
+	  return Cache;
+	})();
+
+	exports["default"] = Cache;
+	module.exports = exports["default"];
+
+/***/ },
+/* 78 */
+/***/ function(module, exports) {
+
+	module.exports = "<button @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n  <input class=\"clockpicker\" type=\"text\" _v-ffc745d8=\"\">\n  <ul v-for=\"mark in marks\" _v-ffc745d8=\"\">\n    <li _v-ffc745d8=\"\">\n      <input class=\"clockpicker\" type=\"time\" v-model=\"mark.time\" _v-ffc745d8=\"\">\n      <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '工作' : '休息'}}</span>\n      <button @click=\"remove(mark)\" _v-ffc745d8=\"\">删除</button>\n    </li>\n  </ul>\n  历时: {{worktime()}}";
 
 /***/ }
 /******/ ]);

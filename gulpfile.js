@@ -1,10 +1,22 @@
 var gulp = require('gulp');
+var uglify = require('gulp-uglify');
 var webpack = require('gulp-webpack');
 var browserSync = require('browser-sync').create();
 
-gulp.task('webpack', function(){
-  gulp.src('index.js')
+function webpack_src() {
+  return gulp.src('index.js')
   .pipe(webpack(require('./webpack.config.js')))
+  .pipe(gulp.dest('./dist'));
+}
+
+gulp.task('webpack', function(){
+  webpack_src()
+  .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('webpack.build', function(){
+  webpack_src()
+  .pipe(uglify())
   .pipe(gulp.dest('./dist'));
 });
 
@@ -22,3 +34,5 @@ gulp.task('browser-sync', function(){
 });
 
 gulp.task('default', ['webpack', 'browser-sync']);
+
+gulp.task('build', ['webpack.build']);
