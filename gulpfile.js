@@ -6,7 +6,6 @@ var browserSync = require('browser-sync').create();
 function webpack_src() {
   return gulp.src('index.js')
   .pipe(webpack(require('./webpack.config.js')))
-  .pipe(gulp.dest('./dist'));
 }
 
 gulp.task('webpack', function(){
