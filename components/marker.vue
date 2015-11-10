@@ -1,15 +1,17 @@
 <template>
-  <button class="btn btn-primary btn-lg marker-btn" @click="mark()">打卡</button>
-  <ul v-for="mark in marks">
-    <li class="form-inline">
-      <input class="form-control" type="time" v-model="mark.time" />
-      <span>{{$index % 2 == 0 ? '开始工作' : '停下工作'}}</span>
-      <a class="text-danger remove-btn" @click="remove(mark)">
-        <i class="glyphicon glyphicon-remove"></i>
-      </a>
-    </li>
-  </ul>
-  历时: {{worktime}}/8小时
+  <div class="center-block col-xs-6 text-center">
+    <button class="btn btn-primary btn-lg marker-btn" @click="mark()">打卡</button>
+    <ul>
+      <li v-for="mark in marks" class="flex">
+        <input class="form-control felx-1" type="time" v-model="mark.time" />
+        <span>{{$index % 2 == 0 ? '开始工作' : '停下工作'}}</span>
+        <a class="text-danger remove-btn" @click="remove(mark)">
+          <i class="glyphicon glyphicon-remove"></i>
+        </a>
+      </li>
+    </ul>
+    历时: {{worktime}}/8小时
+  </div>
 </template>
 
 <script type="text/javascript">
@@ -101,10 +103,20 @@
   .marker-btn {
     margin: 20px;
   }
-  .remove-btn {
-    margin-left: 15px;
-    &:hover {
-      cursor: pointer;
+  .center-block {
+    float: none;
+  }
+  li {
+    white-space: nowrap;
+    line-height: 35px;
+    input {
+      margin-right: 10px;
+    }
+    .remove-btn {
+      margin-left: 10px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 </style>

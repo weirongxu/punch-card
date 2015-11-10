@@ -13,3 +13,14 @@
     }
   }
 </script>
+
+<style lang="sass">
+  .flex {
+    display: flex;
+  }
+  @for $i from 1 through 12  {
+    .flex-#{$i} {
+      flex: #{$i};
+    }
+  }
+</style>

@@ -9994,6 +9994,7 @@
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(85)
 	module.exports = __webpack_require__(72)
 	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(82)
 	if (false) {
@@ -10103,7 +10104,7 @@
 
 
 	// module
-	exports.push([module.id, "input[type=range][_v-ffc745d8] {\n  -webkit-appearance: slider-vertical;\n  height: 300px; }\n\n.marker-btn[_v-ffc745d8] {\n  margin: 20px; }\n\n.remove-btn[_v-ffc745d8] {\n  margin-left: 15px; }\n  .remove-btn[_v-ffc745d8]:hover {\n    cursor: pointer; }\n", ""]);
+	exports.push([module.id, "input[type=range][_v-ffc745d8] {\n  -webkit-appearance: slider-vertical;\n  height: 300px; }\n\n.marker-btn[_v-ffc745d8] {\n  margin: 20px; }\n\n.center-block[_v-ffc745d8] {\n  float: none; }\n\nli[_v-ffc745d8] {\n  white-space: nowrap;\n  line-height: 35px; }\n  li input[_v-ffc745d8] {\n    margin-right: 10px; }\n  li .remove-btn[_v-ffc745d8] {\n    margin-left: 10px; }\n    li .remove-btn[_v-ffc745d8]:hover {\n      cursor: pointer; }\n", ""]);
 
 	// exports
 
@@ -10583,13 +10584,55 @@
 /* 81 */
 /***/ function(module, exports) {
 
-	module.exports = "<button class=\"btn btn-primary btn-lg marker-btn\" @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n  <ul v-for=\"mark in marks\" _v-ffc745d8=\"\">\n    <li class=\"form-inline\" _v-ffc745d8=\"\">\n      <input class=\"form-control\" type=\"time\" v-model=\"mark.time\" _v-ffc745d8=\"\">\n      <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '开始工作' : '停下工作'}}</span>\n      <a class=\"text-danger remove-btn\" @click=\"remove(mark)\" _v-ffc745d8=\"\">\n        <i class=\"glyphicon glyphicon-remove\" _v-ffc745d8=\"\"></i>\n      </a>\n    </li>\n  </ul>\n  历时: {{worktime}}/8小时";
+	module.exports = "<div class=\"center-block col-xs-6 text-center\" _v-ffc745d8=\"\">\n    <button class=\"btn btn-primary btn-lg marker-btn\" @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n    <ul _v-ffc745d8=\"\">\n      <li v-for=\"mark in marks\" class=\"flex\" _v-ffc745d8=\"\">\n        <input class=\"form-control felx-1\" type=\"time\" v-model=\"mark.time\" _v-ffc745d8=\"\">\n        <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '开始工作' : '停下工作'}}</span>\n        <a class=\"text-danger remove-btn\" @click=\"remove(mark)\" _v-ffc745d8=\"\">\n          <i class=\"glyphicon glyphicon-remove\" _v-ffc745d8=\"\"></i>\n        </a>\n      </li>\n    </ul>\n    历时: {{worktime}}/8小时\n  </div>";
 
 /***/ },
 /* 82 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"container\">\n    <marker></marker>\n  </div>";
+
+/***/ },
+/* 83 */,
+/* 84 */,
+/* 85 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(86);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(78)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/sass-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./app.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 86 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(77)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".flex {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex; }\n\n.flex-1 {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1; }\n\n.flex-2 {\n  -webkit-box-flex: 2;\n  -webkit-flex: 2;\n      -ms-flex: 2;\n          flex: 2; }\n\n.flex-3 {\n  -webkit-box-flex: 3;\n  -webkit-flex: 3;\n      -ms-flex: 3;\n          flex: 3; }\n\n.flex-4 {\n  -webkit-box-flex: 4;\n  -webkit-flex: 4;\n      -ms-flex: 4;\n          flex: 4; }\n\n.flex-5 {\n  -webkit-box-flex: 5;\n  -webkit-flex: 5;\n      -ms-flex: 5;\n          flex: 5; }\n\n.flex-6 {\n  -webkit-box-flex: 6;\n  -webkit-flex: 6;\n      -ms-flex: 6;\n          flex: 6; }\n\n.flex-7 {\n  -webkit-box-flex: 7;\n  -webkit-flex: 7;\n      -ms-flex: 7;\n          flex: 7; }\n\n.flex-8 {\n  -webkit-box-flex: 8;\n  -webkit-flex: 8;\n      -ms-flex: 8;\n          flex: 8; }\n\n.flex-9 {\n  -webkit-box-flex: 9;\n  -webkit-flex: 9;\n      -ms-flex: 9;\n          flex: 9; }\n\n.flex-10 {\n  -webkit-box-flex: 10;\n  -webkit-flex: 10;\n      -ms-flex: 10;\n          flex: 10; }\n\n.flex-11 {\n  -webkit-box-flex: 11;\n  -webkit-flex: 11;\n      -ms-flex: 11;\n          flex: 11; }\n\n.flex-12 {\n  -webkit-box-flex: 12;\n  -webkit-flex: 12;\n      -ms-flex: 12;\n          flex: 12; }\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);
