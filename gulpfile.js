@@ -22,7 +22,7 @@ gulp.task('webpack.build', function(){
 gulp.task('browser-sync', function(){
   browserSync.init({
     files: [
-      'dist/**',
+      'assets/**',
       'index.html',
     ],
     server: {

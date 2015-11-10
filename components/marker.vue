@@ -1,18 +1,19 @@
 <template>
-  <button @click="mark()">打卡</button>
-  <input class="clockpicker" type="text" />
+  <button class="btn btn-primary btn-lg marker-btn" @click="mark()">打卡</button>
   <ul v-for="mark in marks">
-    <li>
-      <input class="clockpicker" type="time" v-model="mark.time" />
-      <span>{{$index % 2 == 0 ? '工作' : '休息'}}</span>
-      <button @click="remove(mark)">删除</button>
+    <li class="form-inline">
+      <input class="form-control" type="time" v-model="mark.time" />
+      <span>{{$index % 2 == 0 ? '开始工作' : '停下工作'}}</span>
+      <a class="text-danger remove-btn" @click="remove(mark)">
+        <i class="glyphicon glyphicon-remove"></i>
+      </a>
     </li>
   </ul>
-  历时: {{worktime()}}/8小时
+  历时: {{worktime}}/8小时
 </template>
 
 <script type="text/javascript">
-  import Cache from "./cache"
+  import Cache from "./cache";
 
   var now = new Date();
   var today = `${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`;
@@ -39,7 +40,7 @@
     if (minute.length === 1) {
       minute = '0' + minute;
     }
-    return `${hour}:${minute}`
+    return `${hour}:${minute}`;
   }
 
   export default {
@@ -58,7 +59,7 @@
       remove(mark) {
         this.marks.$remove(mark);
       },
-      worktime() {
+      update_worktime() {
         var throughMs = 0;
         for (var i=0; i < this.marks.length; i+=2) {
           var start = timestr2date(this.marks[i].time);
@@ -71,20 +72,39 @@
           throughMs += diffMs;
         }
         var through_minute = throughMs / 1000 / 60;
-        return time_format({minutes: through_minute})
+        this.worktime = time_format({minutes: through_minute})
       },
+    },
+    ready: function(){
+      setInterval(() => {
+        this.update_worktime();
+      }, 60 * 1000);
     },
     watch: {
-      'marks': function(val, old_val){
-        cache.set('marks', val);
+      'marks': {
+        handler: function(val, old_val){
+          cache.set('marks', val);
+          this.update_worktime();
+        },
+        deep: true,
+        immediate: true,
       },
-    },
+    }
   }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
   input[type=range] {
     -webkit-appearance: slider-vertical;
     height: 300px;
+  }
+  .marker-btn {
+    margin: 20px;
+  }
+  .remove-btn {
+    margin-left: 15px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 </style>
