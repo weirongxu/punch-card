@@ -30,7 +30,7 @@
   }
 
   function date2timestr(date) {
-    return time_format({hours: date.getHours(), minutes: now.getMinutes()});
+    return time_format({hours: date.getHours(), minutes: date.getMinutes()});
   }
 
   function time_format({hours=0, minutes=0}) {
@@ -50,6 +50,7 @@
     data() {
       return {
         marks: cache.get('marks', []),
+        worktime: '',
       }
     },
     methods: {
@@ -74,7 +75,7 @@
           throughMs += diffMs;
         }
         var through_minute = throughMs / 1000 / 60;
-        this.worktime = time_format({minutes: through_minute})
+        this.$data.worktime = time_format({minutes: through_minute})
       },
     },
     ready: function(){
