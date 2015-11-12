@@ -10473,7 +10473,7 @@
 	var _cache2 = _interopRequireDefault(_cache);
 
 	var now = new Date();
-	var today = now.getFullYear() + '-' + now.getMonth() + '-' + now.getDay();
+	var today = now.getFullYear() + '-' + now.getMonth() + '-' + now.getDate();
 	var cache = new _cache2['default']('marker-' + today);
 
 	function timestr2date(time_str) {

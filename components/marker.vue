@@ -18,7 +18,7 @@
   import Cache from "./cache";
 
   var now = new Date();
-  var today = `${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`;
+  var today = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
   var cache = new Cache('marker-' + today);
 
   function timestr2date(time_str) {
