@@ -10625,7 +10625,7 @@
 /* 83 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"center-block col-xs-6 text-center\" _v-ffc745d8=\"\">\n    <button class=\"btn btn-primary btn-lg marker-btn\" @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n    <ul _v-ffc745d8=\"\">\n      <li v-for=\"mark in marks\" class=\"flex\" _v-ffc745d8=\"\">\n        <input class=\"form-control felx-1\" type=\"time\" v-model=\"mark.time\" _v-ffc745d8=\"\">\n        <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '开始工作' : '停下工作'}}</span>\n        <a class=\"text-danger remove-btn\" @click=\"remove(mark)\" _v-ffc745d8=\"\">\n          <i class=\"glyphicon glyphicon-remove\" _v-ffc745d8=\"\"></i>\n        </a>\n      </li>\n    </ul>\n    历时: {{worktime}}/8小时\n  </div>";
+	module.exports = "<div class=\"center-block col-sm-6 text-center\" _v-ffc745d8=\"\">\n    <button class=\"btn btn-primary btn-lg marker-btn\" @click=\"mark()\" _v-ffc745d8=\"\">打卡</button>\n    <ul _v-ffc745d8=\"\">\n      <li v-for=\"mark in marks\" class=\"flex\" _v-ffc745d8=\"\">\n        <input class=\"form-control felx-1\" type=\"time\" v-model=\"mark.time\" _v-ffc745d8=\"\">\n        <span _v-ffc745d8=\"\">{{$index % 2 == 0 ? '开始工作' : '停下工作'}}</span>\n        <a class=\"text-danger remove-btn\" @click=\"remove(mark)\" _v-ffc745d8=\"\">\n          <i class=\"glyphicon glyphicon-remove\" _v-ffc745d8=\"\"></i>\n        </a>\n      </li>\n    </ul>\n    历时: {{worktime}}/8小时\n  </div>";
 
 /***/ },
 /* 84 */

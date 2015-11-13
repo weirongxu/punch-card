@@ -1,5 +1,5 @@
 <template>
-  <div class="center-block col-xs-6 text-center">
+  <div class="center-block col-sm-6 text-center">
     <button class="btn btn-primary btn-lg marker-btn" @click="mark()">打卡</button>
     <ul>
       <li v-for="mark in marks" class="flex">
