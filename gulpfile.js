@@ -8,7 +8,7 @@ var inlineSource = require('gulp-inline-source');
 // dev
 gulp.task('dev.webpack', () => {
   return gulp.src('index.js')
-  .pipe(webpack(require('./webpack.config.js')))
+  .pipe(webpack(require('./webpack.dev.config.js')))
   .pipe(gulp.dest('./assets'));
 });
 

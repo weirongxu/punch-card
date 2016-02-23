@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script type="text/javascript">
+<script>
   import Cache from "./cache";
 
   var now = new Date();

@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script type="text/javascript">
+<script>
   import Marker from "./marker.vue";
 
   export default {
@@ -18,7 +18,7 @@
   .flex {
     display: flex;
   }
-  @for $i from 1 through 12  {
+  @for $i from 1 through 12 {
     .flex-#{$i} {
       flex: #{$i};
     }
